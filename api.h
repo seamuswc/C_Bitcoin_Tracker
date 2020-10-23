@@ -1,3 +1,6 @@
+int play_alert();
+int g_price;
+bool alert_set;
 
 struct MemoryStruct {
   char *memory;
@@ -96,4 +99,25 @@ char * api_call(char * arg) {
 //cant send it back because I need to free it.
 //maybe send the piuinter then free it later??? AHWHWHWHHH
 return amount;
+}
+
+
+int coin(char * arg) {
+    if(arg == NULL) {puts("Command not complete");}
+    print_api(arg);
+return 0;
+}
+
+int print_api(char * arg) {
+  char * amount = api_call(arg);
+  if(amount == NULL) {
+    free(amount);
+    return 0;
+  }
+  puts(amount);
+  if(atoi(amount) >= g_price && g_price > 0 && alert_set == true) { 
+    play_alert();
+  }
+  free(amount);
+  return 0;
 }

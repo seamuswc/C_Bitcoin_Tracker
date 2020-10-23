@@ -14,6 +14,7 @@ int print_api(char * arg);
 int time_change(char * arg);
 int play_alert();
 int restart_thread(pthread_t newthread);
+int print_api(char * arg);
 
 int thread_number = 0;
 pthread_t newthread;
@@ -31,19 +32,6 @@ void * price_thread(void * arg) {
   return NULL;
 }
 
-int print_api(char * arg) {
-  char * amount = api_call(arg);
-  if(amount == NULL) {
-    free(amount);
-    return 0;
-  }
-  puts(amount);
-  if(atoi(amount) >= g_price && g_price > 0 && alert_set == true) { 
-    play_alert();
-  }
-  free(amount);
-  return 0;
-}
 
 int time_change(char * arg) {
   if(arg == NULL) {printf("Time is currently set to %d\n" , time_api_repeat);} 
@@ -62,6 +50,8 @@ int restart_thread(pthread_t newthread) {
   pthread_create(&newthread, NULL, price_thread, NULL);
   return 1;
 }
+
+
 
 int main(void) {
     print_api(NULL);

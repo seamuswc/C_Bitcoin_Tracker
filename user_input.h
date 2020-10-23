@@ -3,6 +3,7 @@ int print_api();
 int time_change(char * arg);
 int set_alert(char * price);
 int stop_alert();
+int coin(char * arg);
 
 const int MAX = 100;
 
@@ -34,11 +35,6 @@ char * second_arg(char * arg) {
     return ++j;
 }
 
-int coin(char * arg) {
-    if(arg == NULL) {puts("Command not complete");}
-    print_api(arg);
-return 0;
-}
 
 int choose(char * arg1, char *arg2) {
 
@@ -52,6 +48,8 @@ int choose(char * arg1, char *arg2) {
     set_alert(arg2);
   } else if (strcmp(arg1, "stop") == 0) {
     stop_alert();
+  }else if (strcmp(arg1, "exit") == 0) {
+    exit(0);
   }else {
     puts("Command not Found");
   }
