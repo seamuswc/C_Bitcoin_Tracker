@@ -29,7 +29,13 @@ void * music() {
 int set_alert(char * price) {
     if(price == NULL) {printf("Alert currently set to: %d\n", g_price);}
     if(price != NULL) {
-        g_price = atoi(price);
+        int new_price = atoi(price);
+        if (new_price < 1)
+        {
+            puts("Alert Command only accepts numbers as a parameter. Example: alert-100000");
+            return 0;
+        }
+        g_price = new_price;
         alert_set = true;
     }
     return 0;

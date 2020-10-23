@@ -49,7 +49,7 @@ int time_change(char * arg) {
   if(arg == NULL) {printf("Time is currently set to %d\n" , time_api_repeat);} 
   if(arg != NULL) {
     int seconds = atoi(arg);
-    if(seconds != 0){
+    if(seconds > 0){
       time_api_repeat=seconds;
       thread_number++;
       restart_thread(newthread);
