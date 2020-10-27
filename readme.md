@@ -22,4 +22,9 @@
 ## 'stop'
 ###### Resets the alert price and stops the vocal alert
 
+## Data.txt
+###### First line is the default repeat time (seconds)
+###### Second line is the default alert price
+###### Can alter to change default values, but only use integers
+
 

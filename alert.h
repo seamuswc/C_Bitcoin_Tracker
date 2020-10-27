@@ -1,6 +1,5 @@
 
 
-int g_price = 0;
 bool alert_set = false;
 bool alert_thread_exists = false;
 void * music();
@@ -29,6 +28,7 @@ void * music() {
 int set_alert(char * price) {
     if(price == NULL) {printf("Alert currently set to: %d\n", g_price);}
     if(price != NULL) {
+        //check for , & . and let use know this doenst work
         int new_price = atoi(price);
         if (new_price < 1)
         {

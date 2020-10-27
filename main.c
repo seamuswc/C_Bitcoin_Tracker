@@ -6,19 +6,26 @@
 #include <pthread.h>
 #include <curl/curl.h>
 
+const int MAX = 100;
+int time_api_repeat;
+int g_price; //the alert price
+
+
 #include "user_input.h"         
 #include "api.h"         
-#include "alert.h"         
+#include "alert.h"    
+#include "data.h"       
 
 int print_api(char * arg); 
 int time_change(char * arg);
 int play_alert();
 int restart_thread(pthread_t newthread);
 int print_api(char * arg);
+int set_data();
 
 int thread_number = 0;
 pthread_t newthread;
-int time_api_repeat = 30;
+
 
 void * price_thread(void * arg) {
   int cancel = thread_number;
@@ -54,6 +61,9 @@ int restart_thread(pthread_t newthread) {
 
 
 int main(void) {
+
+  set_data();
+
     print_api(NULL);
     restart_thread(newthread);
 

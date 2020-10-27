@@ -5,7 +5,6 @@ int set_alert(char * price);
 int stop_alert();
 int coin(char * arg);
 
-const int MAX = 100;
 
 char * input() {
   char * str = malloc(MAX);   
